@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { addSelectedUser } from "../features/users/userSlice";
 import { useData } from "../hooks/useData";
 import ItemList from "./ItemList";
 
-const Login = () => {
+const Login = ({ itemsList }) => {
   const [loginName, setLoginName] = useState("");
   const { currUser, setCurrUser } = useData();
   //   const { handleLogin } = useData();
@@ -23,7 +24,9 @@ const Login = () => {
     <>
       {Object.keys(currUser).length > 0 ? (
         <>
-          <ItemList />
+          <Link to="/items">
+            <ItemList itemsList={itemsList} />
+          </Link>
         </>
       ) : (
         <>

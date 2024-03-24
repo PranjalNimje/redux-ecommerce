@@ -54,3 +54,136 @@ Link{
   text-decoration: none;
 
 }
+.itemCardTitle{
+  font-size: xx-large;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: "Poppins", sans-serif;
+}
+.itemCardDescp{
+  margin-bottom: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-family: "Poppins", sans-serif;
+}
+.itemCardPrice{
+  font-weight: 700;
+  font-size: larger;
+  font-family: "Poppins", sans-serif;
+}
+.quantityCart{
+  padding: 0.3rem 1rem;
+  background-color: #f2f2f2;
+  width: fit-content;
+  margin: 1rem;
+  border-radius: 60px;
+  display: flex;
+    align-items: center;
+}
+.quantityCartButton{
+  padding: 0 0.3rem;
+  border: none;
+  margin: 0 6px;
+}
+.quantityCartInput{
+  padding: 0.3rem;
+  font-family: "Poppins", sans-serif;
+  font-size: large;
+}
+.buttonBuyNow{
+  border: none;
+  padding: 0.5rem 2.5rem;
+  background-color: black;
+  color: #fff;
+  width: fit-content;
+  margin: 1rem;
+  border-radius: 60px;
+  display: flex;
+    align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  margin: 0 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+
+}
+.buttonBuyNow:hover{
+  background-color: #fff;
+  color: #000;
+}
+.buttonAddToCart{
+  border: none;
+  padding: 0.5rem 2.5rem;
+  background-color: #fff;
+  width: fit-content;
+  margin: 1rem;
+  border-radius: 60px;
+  display: flex;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  margin: 0 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+}
+.buttonAddToCart:hover{
+  cursor: pointer;
+  background-color: #000;
+  color: #fff
+}
+.returnDelivery{
+  margin: 0.7rem ;
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  /* grid-template-columns: repeat(2,1fr); */
+  grid-template-columns: 1fr 12fr;
+}
+.deliverySvg{
+  grid-row-start: 1;
+    grid-row-end: 4;
+}
+.returnDeliveryTitle{
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 2px;
+  font-weight: 700;
+
+}
+.returnDeliveryDesc{
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  font-size: smaller;
+}
+.returnDeliveryDetails{
+  text-decoration: underline;
+  text-decoration-color: cadetblue;
+}
+.returnDeliveryDetails:hover{
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgb(0, 0, 0);
+}
+.freeDelivery{
+  margin: 0.7rem ;
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  /* grid-template-columns: repeat(2,1fr); */
+  grid-template-columns: 1fr 12fr;
+}
+.freeDeliveryDesc{
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  font-size: smaller;
+  text-decoration: underline;
+  text-decoration-color: bisque;
+}
+.imageSeriesDisplay{
+  width: 100px;
+   height: 100px;
+}
+.imageSeriesDisplay:hover{
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+}

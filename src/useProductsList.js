@@ -9,7 +9,6 @@ export const useProductsList = () => {
         .then((resp) => resp.json())
         .then((data) => {
           setItemsList(data);
-          console.log("il", itemsList);
         })
         .catch((err) => console.log("Err occured", err));
     };

@@ -1,19 +1,14 @@
 import React, { useMemo } from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
-import { useProductsList } from "../hooks/useProductsList";
 import CategoryHeader from "./CategoryHeader";
 import store from "../store/store";
 import { useState } from "react";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 
-const ItemList = () => {
-  const { itemsList } = useProductsList();
-
+const ItemList = ({ itemsList }) => {
   const [filter, setFilter] = useState(null);
-
-  // const [filteredItems, setFilteredItems] = useState(itemsList);
 
   const filteredData = useMemo(() => {
     if (filter) {
@@ -21,7 +16,6 @@ const ItemList = () => {
     }
     return itemsList;
   }, [itemsList, filter]);
-
   const dispatch = useDispatch();
 
   const handleAddToCart = (i) => {
@@ -29,7 +23,6 @@ const ItemList = () => {
   };
 
   const handleItemsFilter = (val) => {
-    // setFilteredItems(itemsList.filter((item) => item.category === val));
     setFilter(val);
   };
 
@@ -68,7 +61,7 @@ const ItemList = () => {
             }}
           >
             <Link
-              to={`/item/${i.id}`}
+              to={`/items/${i.id}`}
               style={{
                 textDecoration: "none",
                 color: "black",

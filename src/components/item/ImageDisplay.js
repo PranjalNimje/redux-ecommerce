@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ImageDisplay = ({ product }) => {
-  //   const prod = product[0];
-  console.log("PPPPPPRoduc", product);
-  const imgs = product.images;
+const ImageDisplay = ({ images }) => {
+  const [selectedImg, setSelectedImg] = useState(images[0]);
+  const handleImg = (image) => {
+    setSelectedImg(image);
+  };
+
   return (
     <>
-      <div>
-        {/* {product.map((prod) => {
-        prod.images.map((image) => (
-          <img key={prod.id} src={image} width="100" height="100" />
-        ));
-      })} */}
-        {imgs.map((i, index) => (
-          <img key={index} src={i} width="100" height="100" />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "10px",
+          background: "#f2f2f2",
+          height: "100%",
+          width: "80%",
+          borderRadius: "6px",
+          margin: "10px auto",
+        }}
+      >
+        <img
+          src={selectedImg}
+          style={{ width: "300px", height: "300px", margin: "auto" }}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+        }}
+      >
+        {images.map((i, index) => (
+          <img
+            key={index}
+            src={i}
+            className="imageSeriesDisplay"
+            onClick={() => handleImg(i)}
+          />
         ))}
       </div>
     </>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useProductsList } from "./useProductsList";
+import { useProductsList } from "../useProductsList";
 
 export const useCategory = (handleItemsFilter) => {
   // const { itemsList } = useProductsList();

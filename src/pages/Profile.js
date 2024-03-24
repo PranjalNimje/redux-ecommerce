@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { CgProfile } from "react-icons/cg";
-// import { FaUserLarge } from "react-icons/fa6";
 import Cart from "./Cart";
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-// import account from "../assets/account";
 const Profile = () => {
   const selectedUser = useSelector((state) => state.user.selectedUser);
   return (
@@ -15,20 +11,12 @@ const Profile = () => {
           justifyContent: "space-between",
           padding: "1rem",
           backgroundColor: "#fff",
-          boxShadow:
-            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+          borderBottom: "1px solid #e3dddd",
           position: "sticky",
           top: "0px",
           alignItems: "center",
         }}
       >
-        {/* <div
-          style={{
-            // width: "22%",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        > */}
         <div
           style={{
             width: "30%",
@@ -42,7 +30,7 @@ const Profile = () => {
             width="30"
             height="30"
             fill="currentColor"
-            class="bi bi-person-circle"
+            className="bi bi-person-circle"
             viewBox="0 0 16 16"
           >
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -57,15 +45,11 @@ const Profile = () => {
               ? ` Guest  `
               : ` ${selectedUser.userName}  `}
             {"  "}
-            {/* </span> */}
-            {/* <span> */}
-            {/* <FaUserLarge /> */}
           </span>
         </div>
         <span>
           <Cart />
         </span>
-        {/* </div> */}
       </div>
     </>
   );

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useData } from "../hooks/useData";
 import Login from "./Login";
 
-const SignUp = () => {
+const SignUp = ({ itemsList }) => {
   const { name, setName, email, setEmail, handleSubmit } = useData();
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
       {showLogin ? (
-        <Login />
+        <Login itemsList={itemsList} />
       ) : (
         <>
           <div
