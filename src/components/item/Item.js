@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../../features/cart/cartSlice";
 import Profile from "../../pages/Profile";
 import ProductQuantityCart from "../cart/ProductQuantityCart";
 import FreeDelivery from "./FreeDelivery";
@@ -10,7 +12,7 @@ import ReturnDelivery from "./ReturnDelivery";
 
 const Item = ({ itemsList }) => {
   const { id } = useParams();
-
+  const [flag, setFlag] = useState(false);
   const filteredData = useMemo(() => {
     if (itemsList) {
       return itemsList?.filter((item) => Number(item.id) === Number(id));
@@ -19,6 +21,17 @@ const Item = ({ itemsList }) => {
 
   const productSelected = filteredData[0];
 
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    const [item] = cart?.filter((i) => i.newItem.id === productSelected.id);
+    if (item && item.quantity !== 0) {
+      setFlag(true);
+      return;
+    }
+    setFlag(false);
+    dispatch(addToCart(productSelected));
+  };
   return (
     <>
       <Profile />
@@ -26,7 +39,6 @@ const Item = ({ itemsList }) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          height: "100vh",
           margin: "5px",
         }}
       >
@@ -45,10 +57,17 @@ const Item = ({ itemsList }) => {
             99/month
           </p>
           <div style={{ background: "#f2f2f2", height: "2px" }} />
-          <ProductQuantityCart />
+          <ProductQuantityCart product={productSelected} setFlag={setFlag} />
           <div style={{ display: "flex" }}>
             <button className="buttonBuyNow">Buy Now</button>
-            <button className="buttonAddToCart">Add to Cart</button>
+            <button className="buttonAddToCart" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+            {flag && (
+              <span className="productInCartFlag">
+                Product is already in cart
+              </span>
+            )}
           </div>
 
           <div

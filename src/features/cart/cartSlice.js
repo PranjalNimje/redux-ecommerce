@@ -33,14 +33,25 @@ export const cartSlice = createSlice({
       },
     },
     decrementQuantity: {
-      prepare(quantity, index) {
+      prepare(quantity, index, product) {
         return {
-          payload: { quantity, index },
+          payload: { quantity, index, product },
         };
       },
 
       reducer(state, action) {
-        if (action.payload.quantity === 0) return;
+        if (action.payload.quantity === 0 || action.payload.quantity === 1)
+          return state?.filter(
+            (i) => i.newItem.id !== action.payload.product.id
+          );
+        const newItem = action.payload?.product;
+        const existingItemIndex = state?.findIndex(
+          (item) => item.newItem.id === newItem.id
+        );
+        if (existingItemIndex !== -1) {
+          // console.log("ooooooooooooooooooooo", state[existingItemIndex]);
+          state[existingItemIndex].quantity -= 1;
+        }
         state[action.payload.index].quantity = action.payload.quantity - 1;
 
         // if (action.payload.quantity < 0 || action.payload.quantity === 0) {
@@ -50,9 +61,31 @@ export const cartSlice = createSlice({
         // }
       },
     },
+    decCartQuantity: {
+      reducer(state, action) {
+        const prod = state?.map((item, index) =>
+          item.id === action.payload.id
+            ? (state[index].quantity = action.payload.quantity + 1)
+            : addToCart()
+        );
+      },
+    },
+    decCartQuantity: {
+      reducer(state, action) {
+        const prod = state?.map((item, index) =>
+          item.id === action.payload.id
+            ? (state[index].quantity = action.payload.quantity + 1)
+            : addToCart()
+        );
+      },
+    },
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  incrementQuantity,
+  decrementQuantity,
+  decCartQuantity,
+} = cartSlice.actions;
 export default cartSlice.reducer;

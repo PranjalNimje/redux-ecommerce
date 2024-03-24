@@ -12,8 +12,8 @@ const CartModal = () => {
   const handleIncrement = (quantity, index) => {
     dispatch(incrementQuantity(quantity, index));
   };
-  const handleDecrement = (quantity, index) => {
-    dispatch(decrementQuantity(quantity, index));
+  const handleDecrement = (quantity, index, product) => {
+    dispatch(decrementQuantity(quantity, index, product));
   };
   return (
     <>
@@ -31,6 +31,7 @@ const CartModal = () => {
         }}
       >
         <h1 style={{ textAlign: "center", marginBottom: "18px" }}>Cart</h1>
+
         {cart.map((element, index) => (
           <p
             key={element.newItem.id}
@@ -87,7 +88,9 @@ const CartModal = () => {
                 {element.quantity}{" "}
               </span>
               <button
-                onClick={() => handleDecrement(element.quantity, index)}
+                onClick={() =>
+                  handleDecrement(element.quantity, index, element.newItem)
+                }
                 style={{
                   padding: "0.5rem",
                   borderRadius: "3px",
@@ -112,24 +115,40 @@ const CartModal = () => {
             </div>
           </p>
         ))}
-        <Link to="/order" style={{ textDecoration: "none", color: "black" }}>
-          <button
-            style={{
-              padding: "0.7rem",
-              borderRadius: "3px",
-              border: "none",
-              background: "#fff",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              width: "fit-content",
-              justifySelf: "center",
-              background: "gainsboro",
-            }}
-          >
-            Proceed to buy
-          </button>
-        </Link>
+        {cart.length === 0 ? (
+          <>
+            <p className="cartModalNothinCart">Nothing in cart</p>
+            <Link
+              to="/items"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                justifySelf: "center",
+              }}
+            >
+              <button className="addProdCartModal">Add Products</button>
+            </Link>
+          </>
+        ) : (
+          <Link to="/order" style={{ textDecoration: "none", color: "black" }}>
+            <button
+              style={{
+                padding: "0.7rem",
+                borderRadius: "3px",
+                border: "none",
+                background: "#fff",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                width: "fit-content",
+                justifySelf: "center",
+                background: "gainsboro",
+              }}
+            >
+              Proceed to buy
+            </button>
+          </Link>
+        )}
       </div>
       <Link to="/items" style={{ textDecoration: "none", color: "black" }}>
         <button
