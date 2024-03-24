@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Search from "../components/search/Search";
 import Cart from "./Cart";
-const Profile = () => {
+const Profile = ({ itemsList }) => {
   const selectedUser = useSelector((state) => state.user.selectedUser);
   return (
     <>
@@ -47,6 +48,9 @@ const Profile = () => {
             {"  "}
           </span>
         </div>
+
+        <Search itemsList={itemsList} />
+
         <span>
           <Cart />
         </span>

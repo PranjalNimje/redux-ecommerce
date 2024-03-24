@@ -12,9 +12,9 @@ const CategoryHeader = ({ handleItemsFilter }) => {
         display: "flex",
         backgroundColor: "#a9d1d1",
         justifyContent: "space-evenly",
-        position: "sticky",
+        // position: "sticky",
         background: "e5dddd",
-        top: "62px",
+        // top: "62px",
       }}
     >
       {categories.map((eachCategory) => (

@@ -215,3 +215,33 @@ Link{
   background: rgb(79, 76, 76);
   color:#fff;
 }
+.searchList{
+  width: 45%;
+  position:relative
+}
+.searchListInput{
+  background-color: #f2f2f2;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  width: 93%;
+  border-radius: 6px;
+}
+.searchListInput:focus-visible{
+  outline: none;
+}
+.filteredDataInSeach{
+  z-index: 10000;
+  background-color: #fff;
+  position: absolute;
+  top: 29px;
+  width: 97%;
+  padding:2%;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.optionInSeach{
+  padding: 1%;
+}
+.optionInSeach:hover{
+ background-color: #f2f2f2;
+}
