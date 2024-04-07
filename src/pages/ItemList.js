@@ -37,7 +37,7 @@ const ItemList = ({ itemsList }) => {
   const cart = useSelector((state) => state.cart);
   return (
     <>
-      <Profile itemsList={itemsList} />
+      {/* <Profile itemsList={itemsList} /> */}
       <CategoryHeader handleItemsFilter={handleItemsFilter}></CategoryHeader>
       <div
         style={{

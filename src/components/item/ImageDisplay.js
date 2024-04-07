@@ -6,6 +6,12 @@ const ImageDisplay = ({ images }) => {
     setSelectedImg(image);
   };
 
+  const arr = images.filter((pic) => pic === selectedImg);
+
+  if (arr.length === 0) {
+    setSelectedImg(images[0]);
+  }
+
   return (
     <>
       <div

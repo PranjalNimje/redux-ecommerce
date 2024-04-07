@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { addToCart } from "../../features/cart/cartSlice";
 import Profile from "../../pages/Profile";
 import ProductQuantityCart from "../cart/ProductQuantityCart";
+import Search from "../search/Search";
 import FreeDelivery from "./FreeDelivery";
 
 import ImageDisplay from "./ImageDisplay";
@@ -12,13 +13,25 @@ import ReturnDelivery from "./ReturnDelivery";
 
 const Item = ({ itemsList }) => {
   const { id } = useParams();
+  const [filterProduct, setFilterProduct] = useState(false);
+  console.log("ITEM ID", id);
   const [flag, setFlag] = useState(false);
-  const filteredData = useMemo(() => {
-    if (itemsList) {
-      return itemsList?.filter((item) => Number(item.id) === Number(id));
-    }
-  }, [itemsList]);
 
+  // const filteredData = useMemo(() => {
+  //   if (itemsList) {
+  //     setFilterProduct(true);
+  //     console.log("I M RUNNING");
+  //     return itemsList?.filter((item) => Number(item.id) === Number(id));
+  //   }
+  // }, [itemsList]);
+
+  const filteredData = itemsList?.filter(
+    (item) => Number(item.id) === Number(id)
+  );
+
+  console.log("filteredData", filteredData);
+
+  // setFilterProduct(() => filteredData[0]);
   const productSelected = filteredData[0];
 
   const cart = useSelector((state) => state.cart);
@@ -32,9 +45,15 @@ const Item = ({ itemsList }) => {
     setFlag(false);
     dispatch(addToCart(productSelected));
   };
+
+  useEffect(() => {
+    console.log("filterProduct");
+  }, [filterProduct]);
+
   return (
     <>
-      <Profile />
+      {/* <Profile itemsList={itemsList} /> */}
+      {/* <Search itemsList={itemsList} /> */}
       <div
         style={{
           display: "flex",

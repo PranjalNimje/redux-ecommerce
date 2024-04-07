@@ -6,7 +6,7 @@ import Item from "../item/Item";
 const Search = ({ itemsList }) => {
   const [title, setTitle] = useState("");
   const [flag, setFlag] = useState(false);
-  const [filteredData, setfilteredData] = useState();
+  const [filteredData, setfilteredData] = useState([]);
   const handleChange = (e) => {
     setTitle(e.target.value);
     setFlag(false);
@@ -25,14 +25,10 @@ const Search = ({ itemsList }) => {
   const navigate = useNavigate();
 
   const handleSearchClick = (id) => {
-    // setFlag(true);
-    // navigate(`/items/${id}`);
-    setfilteredData(null);
+    navigate(`/items/${id}`);
+    setfilteredData();
   };
 
-  //   const handleSearchClick =()=>{
-
-  //   }
   return (
     <>
       <div className="searchList">
@@ -44,30 +40,26 @@ const Search = ({ itemsList }) => {
           onChange={(e) => handleChange(e)}
         />
         {title && (
-          <div className="filteredDataInSeach">
+          <div
+            className={
+              filteredData?.length === undefined
+                ? "filteredDataInSeachHide"
+                : "filteredDataInSeachShow"
+            }
+          >
             {filteredData?.map((i) => (
               <>
-                <Link
+                <option
                   key={i.id}
-                  to={`/items/${i.id}`}
-                  style={{ textDecoration: "none", color: "#000" }}
+                  className="optionInSeach"
+                  onClick={() => handleSearchClick(i.id)}
                 >
-                  <option
-                    key={i.id}
-                    className="optionInSeach"
-                    onClick={() => handleSearchClick(i.id)}
-                  >
-                    {i.title}
-                  </option>
-                </Link>
+                  {i.title}
+                </option>
               </>
             ))}
           </div>
         )}
-        {/* {filteredData?.map((i) => (
-        <li>{i.title}</li>
-      ))} */}
-        {/* {flag && <Item itemsList={itemsList} />} */}
       </div>
     </>
   );

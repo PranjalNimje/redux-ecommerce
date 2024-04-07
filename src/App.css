@@ -229,7 +229,7 @@ Link{
 .searchListInput:focus-visible{
   outline: none;
 }
-.filteredDataInSeach{
+ .filteredDataInSeachShow{
   z-index: 10000;
   background-color: #fff;
   position: absolute;
@@ -239,9 +239,13 @@ Link{
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+.filteredDataInSeachHide{
+  position: initial
+}
 .optionInSeach{
   padding: 1%;
 }
 .optionInSeach:hover{
  background-color: #f2f2f2;
+ cursor: pointer;
 }
