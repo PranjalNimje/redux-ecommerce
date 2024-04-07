@@ -11,10 +11,11 @@ const Profile = ({ itemsList }) => {
           display: "flex",
           justifyContent: "space-between",
           padding: "1rem",
-          backgroundColor: "#fff",
+          backgroundColor: "rgba(0, 0, 0, 0)",
           borderBottom: "1px solid #e3dddd",
-          position: "sticky",
+          position: "absolute",
           top: "0px",
+          width: "-webkit-fill-available",
           alignItems: "center",
         }}
       >

@@ -59,6 +59,8 @@ const Item = ({ itemsList }) => {
           display: "flex",
           justifyContent: "space-between",
           margin: "5px",
+          position: "relative",
+          top: "59px",
         }}
       >
         <div style={{ display: "grid", width: "50%", height: "fitContent" }}>

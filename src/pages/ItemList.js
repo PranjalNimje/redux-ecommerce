@@ -6,6 +6,7 @@ import store from "../store/store";
 import { useState } from "react";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
+import Banner from "../components/banner/banner";
 
 const ItemList = ({ itemsList }) => {
   const [filter, setFilter] = useState(null);
@@ -38,7 +39,8 @@ const ItemList = ({ itemsList }) => {
   return (
     <>
       {/* <Profile itemsList={itemsList} /> */}
-      <CategoryHeader handleItemsFilter={handleItemsFilter}></CategoryHeader>
+      {/* <CategoryHeader handleItemsFilter={handleItemsFilter}></CategoryHeader> */}
+      <Banner />
       <div
         style={{
           margin: "auto",

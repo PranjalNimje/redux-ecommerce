@@ -4,19 +4,19 @@ import { Outlet } from "react-router-dom";
 import Item from "../item/Item";
 
 const Search = ({ itemsList }) => {
-  const [title, setTitle] = useState("");
+  const [query, setQuery] = useState("");
   const [flag, setFlag] = useState(false);
   const [filteredData, setfilteredData] = useState([]);
   const handleChange = (e) => {
-    setTitle(e.target.value);
+    setQuery(e.target.value);
     setFlag(false);
     setfilteredData(() =>
       itemsList?.filter(
         (item) =>
-          item.title.toLowerCase().includes(title.toLowerCase()) ||
-          item.description.toLowerCase().includes(title.toLowerCase()) ||
-          item.category.toLowerCase().includes(title.toLowerCase()) ||
-          item.brand.toLowerCase().includes(title.toLowerCase())
+          item.title.toLowerCase().includes(query?.toLowerCase()) ||
+          item.description.toLowerCase().includes(query?.toLowerCase()) ||
+          item.category.toLowerCase().includes(query?.toLowerCase()) ||
+          item.brand.toLowerCase().includes(query?.toLowerCase())
       )
     );
     console.log(filteredData);
@@ -36,10 +36,10 @@ const Search = ({ itemsList }) => {
           type="text"
           placeholder="Search for products, brand and more"
           className="searchListInput"
-          value={title}
+          value={query}
           onChange={(e) => handleChange(e)}
         />
-        {title && (
+        {query && (
           <div
             className={
               filteredData?.length === undefined
