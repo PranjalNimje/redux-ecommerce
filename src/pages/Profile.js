@@ -11,8 +11,8 @@ const Profile = ({ itemsList }) => {
           display: "flex",
           justifyContent: "space-between",
           padding: "1rem",
-          backgroundColor: "rgba(0, 0, 0, 0)",
-          borderBottom: "1px solid #e3dddd",
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          // borderBottom: "1px solid #e3dddd",
           position: "absolute",
           top: "0px",
           width: "-webkit-fill-available",
@@ -27,6 +27,19 @@ const Profile = ({ itemsList }) => {
             alignItems: "center",
           }}
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="#fff"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

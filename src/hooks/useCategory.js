@@ -13,19 +13,19 @@ export const useCategory = (handleItemsFilter) => {
   });
   //   console.log("Category", category);
 
-  // const categoriesSeparatedList = itemsList.reduce((acc, obj) => {
-  //   const category = obj.category;
-  //   if (!acc[category]) {
-  //     acc[category] = [];
-  //   }
-  //   acc[category].push(obj);
-  //   return acc;
-  // }, []);
+  const categoriesSeparatedList = itemsList.reduce((acc, obj) => {
+    const category = obj.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(obj);
+    return acc;
+  }, []);
 
   // console.log("catObject", categoriesSeparatedList);
 
   return {
     categories,
-    // categoriesSeparatedList,
+    categoriesSeparatedList,
   };
 };

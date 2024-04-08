@@ -6,16 +6,20 @@ import womenFashion3 from "../../assets/womenFashion3.jpg";
 
 const Banner = () => {
   const bannerImgs = [womenFashion1, womenFashion2, womenFashion3];
-  const [selectedImg, setSelectedImg] = useState(bannerImgs[0]);
-  const moveLeft = ({ img }) => {
-    setSelectedImg(() => bannerImgs[1]);
+  const [position, setPosition] = useState(0);
+  const moveLeft = () => {
+    let value = position === 0 ? 2 : position - 1;
+    setPosition(value);
   };
-  const moveRight = () => {};
+  const moveRight = () => {
+    let value = position === 2 ? 0 : position + 1;
+    setPosition(value);
+  };
   return (
     <div
       className="bannerImg"
       style={{
-        backgroundImage: `url(${selectedImg})`,
+        backgroundImage: `url(${bannerImgs[position]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "130vh",
@@ -25,7 +29,7 @@ const Banner = () => {
     >
       {/* <p className="bannerMotto">Bring Joy to Every Purchase</p> */}
       {/* <p className="bannerMotto">Explore, Shop, Enjoy - It's That Simple</p> */}
-      <button className="bannerBtn" onClick={() => moveLeft(selectedImg)}>
+      <button className="bannerBtn" onClick={moveLeft}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="50"

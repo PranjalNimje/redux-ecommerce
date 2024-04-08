@@ -62,7 +62,6 @@ Link{
 }
 .itemCardDescp{
   margin-bottom: 0;
-  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-family: "Poppins", sans-serif;
@@ -277,3 +276,115 @@ Link{
   /* height: 500px;
   width: 500px; */
 }
+.catSliderHeading{
+  text-align: center;
+  font-size: xx-large;
+  font-family: "Poppins", sans-serif;
+  margin-top: 0;
+  padding-top: 2rem;
+}
+.catSliderBanner{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  align-items: center;
+}
+.catSliderCard{
+  width: 250px;
+              height: fit-content;
+              /* border: 1px solid grey; */
+              box-shadow:
+                0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              padding: 1rem;
+              margin: 1rem;
+              border-radius: 6px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: center;
+              background: #fff;
+              transition: all 1s;
+}
+.catSliderCard:hover{
+  transform: scale(1.2);
+}
+.catSliderImg{
+  height: 150px;
+  width: 150px;
+}
+.catSliderButton{
+  background-color: black;
+    border: none;
+    height: -moz-fit-content;
+    height: fit-content;
+    color: white;
+    font-size: larger;
+    padding: 1rem;
+    font-weight: bold;
+    margin: 0.5rem;
+    transition: all 300ms;
+}
+.catSliderButton:hover  {
+  background-color: orange;
+  transform: scale(1.2);
+}
+.catSliderButton:disabled {
+  opacity: 0.3;
+  background-color: black;
+  transform: none;
+  cursor: not-allowed;
+}
+.catSliderBrand{
+  font-family: "Nunito", sans-serif;
+    font-weight: 300;
+    margin-top: 0;
+    font-size: larger;
+    font-weight: bold;
+}
+.catSliderCardPrice{
+  color: #f26522;
+}
+.catSliderPrice{
+  margin-top: 0px;
+  padding: 0px;
+}
+.catSliderButtonGrp{
+  width: 180px;
+    /* justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
+}
+.catSliderButtonBuyNow{
+  color: #f26522;
+    font-weight: bold;
+    font-size: medium;
+    background-color: transparent;
+    border: none;
+}
+.catSliderButtonBuyNow:hover{
+  color: black;
+  cursor: pointer;
+}
+.catSliderButtonSeeMore{
+  color: #000;
+  background-color: transparent;
+  border: none;
+  font-size: medium;
+}
+.catSliderButtonSeeMore:hover{
+  color: orange;
+  cursor: pointer;
+}
+.wishlistHeart:hover{
+  color: red;
+}
+.wishlistContainer{
+  align-self: flex-start;
+  transition: all 300ms;
+}
+.wishlistContainer:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+
