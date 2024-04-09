@@ -11,6 +11,10 @@ import Item from "./components/item/Item";
 
 import { useProductsList } from "./useProductsList";
 import Layout from "./pages/Layout";
+import HomePage from "./pages/HomePage";
+import WishlistPage from "./components/wishlist/WishlistPage";
+import Login from "./pages/Login";
+import ProductByCategory from "./components/productByCategory/ProductByCategory";
 
 function App() {
   const { itemsList } = useProductsList();
@@ -22,7 +26,19 @@ function App() {
       children: [
         {
           path: "/",
+          element: <HomePage itemsList={itemsList} />,
+        },
+        {
+          path: "/signup",
           element: <SignUp itemsList={itemsList} />,
+        },
+        // {
+        //   path: "/products",
+        //   element: <SignUp itemsList={itemsList} />,
+        // },
+        {
+          path: "/products/:category",
+          element: <ProductByCategory />,
         },
         {
           path: "/cart",
@@ -39,6 +55,14 @@ function App() {
         {
           path: "/items/:id",
           element: <Item itemsList={itemsList} />,
+        },
+        {
+          path: "/wishlist",
+          element: <WishlistPage />,
+        },
+        {
+          path: "/login",
+          element: <Login itemsList={itemsList} />,
         },
       ],
     },

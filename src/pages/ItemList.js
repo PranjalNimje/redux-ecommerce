@@ -43,8 +43,8 @@ const ItemList = ({ itemsList }) => {
     <>
       {/* <Profile itemsList={itemsList} /> */}
       {/* <CategoryHeader handleItemsFilter={handleItemsFilter}></CategoryHeader> */}
-      <Banner />
-      <CategorySlider itemsList={itemsList} />
+      {/* <Banner />
+      <CategorySlider itemsList={itemsList} /> */}
       <div
         style={{
           margin: "auto",
@@ -53,6 +53,7 @@ const ItemList = ({ itemsList }) => {
           alignItems: "center",
           justifyContent: "center",
           background: "cadetblue",
+          paddingTop: "4rem",
         }}
       >
         {filteredData.map((i) => (

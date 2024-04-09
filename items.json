@@ -558,7 +558,8 @@
       "category": "woman fashion",
       "brand": "Levis",
       "images": ["https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"],
-      "rating": 2.6
+      "rating": 2.6,
+      "discountPercentage": 15.58
     },
     {
       "id": 32,
@@ -568,7 +569,8 @@
       "category": "woman fashion",
       "brand": "Levis",
       "images": ["https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg"],
-      "rating": 2.9
+      "rating": 2.9,
+      "discountPercentage": 14
     },
     {
       "id": 33,
@@ -578,7 +580,8 @@
       "category": "woman fashion",
       "brand": "Globus",
       "images": ["https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg"],
-      "rating": 3.8
+      "rating": 3.8,
+      "discountPercentage": 46
     },
     {
       "id": 34,
@@ -588,7 +591,8 @@
       "category": "woman fashion",
       "brand": "Forever 21",
       "images": ["https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg"],
-      "rating": 4.7
+      "rating": 4.7,
+      "discountPercentage": 13
     },
     {
       "id": 35,
@@ -598,7 +602,8 @@
       "category": "woman fashion",
       "brand": "Zara",
       "images": ["https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg"],
-      "rating": 4.5
+      "rating": 4.5,
+      "discountPercentage": 35
     },
     {
       "id": 36,
@@ -608,7 +613,8 @@
       "category": "woman fashion",
       "brand": "h&m",
       "images": ["https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"],
-      "rating": 3.6
+      "rating": 3.6,
+      "discountPercentage": 50
     }
   ],
   "total": 100,

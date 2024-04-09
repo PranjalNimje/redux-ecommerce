@@ -386,5 +386,133 @@ Link{
   cursor: pointer;
   transform: scale(1.2);
 }
+.profileTabs{
+  color: #fff;
+  transition: all 300ms;
+}
+.profileTabs:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  color: black
+}
+.wishlist{
+ padding-top: 4rem;
+ font-family: "Poppins", sans-serif;
+}
+.wishlistComponent{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.wishlistCard{
+  background-color: #fff;
+  outline: 1px solid #e9e9eb;
+    border-radius: 4px;
+    width: 160px;
+    height: fit-content;
+}
+.wishlistPD{
+  display: flex;
+  justify-content: space-evenly;
+}
 
-
+.wishlistText{
+border-bottom: 1px solid #e9e9eb;
+border-top: 1px solid #e9e9eb;
+padding: 5px;
+}
+.wishlistTitle{
+  text-align: center;
+  text-wrap: nowrap;
+}
+.wishlistBottom{
+  display: grid;
+}
+.wishlistBag{
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+}
+.wishlistBag:hover{
+  cursor: pointer;
+  color: #f26522;
+}
+.wishlistRemove{
+  border: none;
+    border-radius: 19px;
+    padding: 5px 10px;
+    margin: 0.5rem;
+}
+.wishlistRemove:hover{
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+.AddedToCartAlertCont{
+  position: absolute;
+  top: 4rem;
+  left: 40%;
+    z-index: 100;
+    background: green;
+    display: flex;
+    /* transition: all 300ms; */
+}
+/* .AddedToCartAlertCont:active, .AddedToCartAlertCont:focus-visible{
+  transform: scale(1.2);
+} */
+.ProfileDiv{
+  position: absolute;
+    z-index: 1000;
+    background: black;
+    color: #fff;
+    right: 0;
+    top: 4.2rem;
+    text-align: center;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    /* height: 90vh; */
+    justify-content: space-evenly;
+    transition: all 1s ease;
+}
+.profileLogin{
+  margin: 1rem 2rem;
+}
+.profileSignup, .profileWelcome , .profileEdit{
+  margin: 1rem 2rem;
+}
+.profileLogin:hover , .profileSignup:hover, .MenuProductList:hover{
+  cursor: pointer;
+}
+.MenuProductBlock{
+  position: absolute;
+  top: 4.2rem;
+  left: 0;
+  z-index: 1000;
+  background: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.MenuProductList{
+  margin: 1rem 2rem;
+}
+.CategoryDisplay{
+  padding-top: 4rem;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: cadetblue;
+  display: flex;
+}
+.profileMenuBtn{
+  border: none;
+  background: transparent;
+  z-index: 10000;
+}

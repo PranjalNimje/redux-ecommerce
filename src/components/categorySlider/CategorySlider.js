@@ -46,6 +46,9 @@ const CategorySlider = ({ itemsList }) => {
     // dispatch(addToCart(product));
     navigate(`/items/${product.id}`);
   };
+  const GoToCategoryPage = (category) => {
+    navigate(`/products/${category}`);
+  };
   // console.log(length, "length");
   return (
     <div>
@@ -67,13 +70,18 @@ const CategorySlider = ({ itemsList }) => {
               if (index < pointerRight && index > pointerLeft) {
                 return (
                   <div className="catSliderCard" key={ele.id}>
-                    <p className="catSliderBrand">{ele.brand}</p>
-                    <p className="catSliderPrice">
-                      <span className="catSliderCardPrice">Price</span> ₹{" "}
-                      {ele.price}
-                    </p>
-                    <img src={ele.images[0]} className="catSliderImg" />
-                    <p>{ele.title}</p>
+                    <div
+                      style={{ textAlign: "center" }}
+                      onClick={() => BuyNowProduct(ele)}
+                    >
+                      <p className="catSliderBrand">{ele.brand}</p>
+                      <p className="catSliderPrice">
+                        <span className="catSliderCardPrice">Price</span> ₹{" "}
+                        {ele.price}
+                      </p>
+                      <img src={ele.images[0]} className="catSliderImg" />
+                      <p>{ele.title}</p>
+                    </div>
                     <div className="catSliderButtonGrp">
                       <button
                         className="catSliderButtonBuyNow"
@@ -81,7 +89,10 @@ const CategorySlider = ({ itemsList }) => {
                       >
                         Buy Now
                       </button>
-                      <button className="catSliderButtonSeeMore">
+                      <button
+                        className="catSliderButtonSeeMore"
+                        onClick={() => GoToCategoryPage(ele.category)}
+                      >
                         See More
                       </button>
                     </div>
