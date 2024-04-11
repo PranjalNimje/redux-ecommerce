@@ -498,7 +498,15 @@ padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  transition: all 1s;
+  /* width:0; */
 }
+.open{
+  /* width: fit-content; */
+  transform: scale(1);
+
+}
+
 .MenuProductList{
   margin: 1rem 2rem;
 }
@@ -515,4 +523,45 @@ padding: 5px;
   border: none;
   background: transparent;
   z-index: 10000;
+}
+.signupBlock{
+  display: flex;
+  height: 80vh;
+  width: 60vw;
+  margin: auto;
+  margin-top: 5rem;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+}
+.signupLeftBg{
+  /* background-image: url('./assets/Signup_Background.jpg'); */
+}
+.signupImg{
+  height: 80vh;
+  width: 80vw;
+}
+.signupBgHeader{
+  font-size: xx-large;
+  color: #fff;
+}
+.signupBtn{
+  padding: 0.5rem;
+  border-radius: 38px;
+  border: none;
+  background: #b661f6;
+  color: #fff;
+}
+.signupBtn:hover{
+  background-color: #000;
+  color: #b661f6;
+}
+.signupName, .signupPw, .signupEmail{
+  padding: 0.5rem;
+                border-radius: 3px;
+                border: 1px solid;
+}
+.signupForm{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }

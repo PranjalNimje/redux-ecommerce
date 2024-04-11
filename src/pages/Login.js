@@ -8,23 +8,35 @@ import ItemList from "./ItemList";
 const Login = ({ itemsList }) => {
   const [loginName, setLoginName] = useState("");
   const { currUser, setCurrUser } = useData();
+
+  const [userFlag, setUserFlag] = useState(false);
   //   const { handleLogin } = useData();
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
 
   const navigate = useNavigate();
 
+  let currentUser = [];
   const handleLogin = () => {
     console.log("allUsers", allUsers);
-    const currentUser = allUsers.filter((ele) => ele.userName === loginName);
+    currentUser = allUsers.filter((ele) => ele.userName === loginName);
+    setUserFlag(true);
     setCurrUser(currentUser[0]);
+    if (currentUser?.length === 0) {
+      console.log("You are not sign up");
+    }
     // console.log("currUser", currUser);
-    dispatch(addSelectedUser(currentUser));
-    if (Object.keys(currUser).length > 0) {
+    // dispatch(addSelectedUser(currentUser));
+    if (currentUser?.length > 0) {
       navigate("/items");
     }
+    setLoginName("");
   };
   console.log("currUser", currUser);
+
+  const GoToSignUp = () => {
+    navigate("/signup");
+  };
 
   return (
     <>
@@ -64,10 +76,16 @@ const Login = ({ itemsList }) => {
               background: "powderblue",
               color: "black",
             }}
-            // onClick={handleLogin}
+            onClick={handleLogin}
           >
-            <Link to="/items">Login</Link>
+            Login
           </button>
+          {currentUser?.length === 0 && userFlag === true && (
+            <div>
+              <p>You are not a user. Please Sign up first</p>
+              <button onClick={GoToSignUp}>Sign Up</button>
+            </div>
+          )}
         </div>
       </>
     </>

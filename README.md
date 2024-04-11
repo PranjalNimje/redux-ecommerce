@@ -75,3 +75,7 @@ Steps:
 
 1. npm run json:server1
 2. npm start
+
+### `npm install @hookform/error-message` for ErrorMessages
+
+### `npm i react-hook-form`

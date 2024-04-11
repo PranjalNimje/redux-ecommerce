@@ -21,6 +21,7 @@ const userInitialState = {
   users: {
     userName: "",
     email: "",
+    password: "",
     orders: orderInitialState,
     wishlist: wishlistInitialState,
   },
@@ -28,6 +29,7 @@ const userInitialState = {
   selectedUser: {
     userName: "",
     email: "",
+    password: "",
     orders: orderInitialState,
     wishlist: wishlistInitialState,
   },
@@ -47,9 +49,9 @@ const userSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     addUser: {
-      prepare(userName, email) {
+      prepare(userName, email, password) {
         return {
-          payload: { userName, email },
+          payload: { userName, email, password },
         };
       },
       reducer(state, action) {
@@ -57,6 +59,7 @@ const userSlice = createSlice({
           ...state.users,
           userName: action.payload.userName,
           email: action.payload.email,
+          password: action.payload.password,
         };
         // state.users.userName = action.payload.userName;
         // state.users.email = action.payload.email;
@@ -68,6 +71,7 @@ const userSlice = createSlice({
       console.log(action);
       state.selectedUser.email = action.payload[0].email;
       state.selectedUser.userName = action.payload[0].userName;
+      state.selectedUser.password = action.payload[0].password;
     },
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Search from "../components/search/Search";
 import Cart from "./Cart";
@@ -10,6 +10,7 @@ const Profile = ({ itemsList }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [iconActive, setIconActive] = useState("");
+  const ref = useRef(null);
 
   const navigate = useNavigate();
   const GoToProducts = () => {
@@ -37,14 +38,37 @@ const Profile = ({ itemsList }) => {
   };
   const handleSignup = () => {
     navigate(`/signup`);
+    setIsOpen(false);
+    setIsHovered(false);
   };
   const handleLogin = () => {
     navigate(`/login`);
+    setIsOpen(false);
+    setIsHovered(false);
   };
   const handleLogout = () => {};
   // const handleProducts = () => {
   //   navigate
   // };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      console.log("EVENT", event);
+      console.log("Ref", ref);
+      if (ref.current && !ref.current.contains(event?.target)) {
+        setIsOpen(false);
+        setIsHovered(false);
+        console.log("INSIDE");
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    // return () => {
+    //   document.addEventListener("mousedown", handleClickOutside);
+    // };
+  }, []);
+  const CloseMenu = () => {
+    setIsOpen(false);
+    setIsHovered(false);
+  };
   console.log("isOpen", isOpen);
   console.log("isHovered", isHovered);
   console.log("iconActive", iconActive);
@@ -94,7 +118,7 @@ const Profile = ({ itemsList }) => {
           </button>
 
           {isOpen && iconActive === "MenuButton" && (
-            <ProductMenu setIsOpen={setIsOpen} />
+            <ProductMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           )}
 
           {/* <span style={{ paddingLeft: " 5px" }}>
@@ -136,8 +160,8 @@ const Profile = ({ itemsList }) => {
         <button
           value={"ProfileButton"}
           className="profileMenuBtn"
-          onMouseEnter={(e) => handleHoveredOn(e)}
-          onMouseLeave={(e) => handleHoveredOff(e)}
+          // onMouseEnter={(e) => handleHoveredOn(e)}
+          // onMouseLeave={(e) => handleHoveredOff(e)}
           onClick={(e) => handleProfileClick(e)}
         >
           <svg
@@ -158,7 +182,7 @@ const Profile = ({ itemsList }) => {
         </button>
       </div>
       {(isHovered || isOpen) && iconActive === "ProfileButton" && (
-        <div className="ProfileDiv">
+        <div className="ProfileDiv" ref={ref}>
           <p className="profileWelcome">
             Hello
             {selectedUser.userName === ""

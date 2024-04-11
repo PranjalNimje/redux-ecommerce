@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useCategory } from "../../hooks/useCategory";
 
-const ProductMenu = ({ setIsOpen }) => {
+const ProductMenu = ({ setIsOpen, isOpen }) => {
   const navigate = useNavigate();
   const handleProductByCategoryNavigation = (category) => {
     navigate(`/products/${category}`);
@@ -11,7 +11,7 @@ const ProductMenu = ({ setIsOpen }) => {
   const { categories } = useCategory();
   console.log("inside product menu");
   return (
-    <div className="MenuProductBlock">
+    <div className={`MenuProductBlock ${isOpen ? "open" : ""}`}>
       {categories.map((category) => (
         <p
           className="MenuProductList"

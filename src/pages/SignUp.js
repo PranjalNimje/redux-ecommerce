@@ -1,85 +1,132 @@
-import React, { useState } from "react";
+import React from "react";
 import { useData } from "../hooks/useData";
-import Login from "./Login";
-
+import Signup_Background from "../assets/Signup_Background.jpg";
+import Lavendar_bg from "../assets/Lavendar_bg.jpg";
+import { useNavigate } from "react-router-dom";
 const SignUp = ({ itemsList }) => {
-  const { name, setName, email, setEmail, handleSubmit } = useData();
-  const [showLogin, setShowLogin] = useState(false);
+  const {
+    accountCreatedFlag,
+    handleSubmit,
+    onSubmitClick,
+    register,
+    errors,
+    getValues,
+    setValue,
+  } = useData();
+  console.log("ERRORS", errors);
+
+  const navigate = useNavigate();
+  const multipleValues = getValues();
+  console.log("multipleValues", multipleValues);
+  const GoToLogin = () => {
+    navigate(`/login`);
+  };
   return (
     <>
-      {showLogin ? (
-        <Login itemsList={itemsList} />
-      ) : (
-        <>
-          <div
+      <div
+        className="signupBlock"
+        style={{
+          backgroundImage: `url(${Lavendar_bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+        }}
+      >
+        <div className="signupLeftBg">
+          <p className="signupBgHeader">Welcome to TradeTrove</p>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            width: "fit-content",
+            padding: "4rem",
+            // border: "2px solid GAINSBORO",
+            paddingTop: "1rem",
+            rowGap: "1rem",
+            background: "rgba(65, 4, 99, 0.7)",
+          }}
+        >
+          {" "}
+          <h1
             style={{
-              display: "grid",
-              margin: "auto",
-              width: "fit-content",
-              padding: "4rem",
-              // border: "2px solid GAINSBORO",
-              paddingTop: "1rem",
-              rowGap: "1rem",
-              borderRadius: "5px",
-              boxShadow:
-                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-              marginTop: "5rem",
+              textAlign: "center",
+              marginBottom: "18px",
+              color: "#fff",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
-            {" "}
-            <h1 style={{ textAlign: "center", marginBottom: "18px" }}>
-              SignUp
-            </h1>
+            SignUp
+          </h1>
+          <form className="signupForm" onSubmit={handleSubmit(onSubmitClick)}>
             <input
-              style={{
-                padding: "0.5rem",
-                borderRadius: "3px",
-                border: "1px solid",
-              }}
-              type="text"
-              placeholder="Username"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              className="signupName"
+              placeholder="UserName"
+              // name={name}
+              // errors={errors}
+              // name="singleErrorInput"
+              // render={({ errors }) => <p>{errors.message}</p>}
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Please Enter Username",
+                },
+                minLength: {
+                  value: 5,
+                  message: "Username should be greater than 5",
+                },
+              })}
             />
+            {errors.name && <p>{errors.name.message}</p>}
             <input
-              style={{
-                padding: "0.5rem",
-                borderRadius: "3px",
-                border: "1px solid",
-              }}
-              type="text"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              className="signupEmail"
+              type="email"
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Please Enter Email",
+                },
+                pattern: {
+                  value:
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Please enter email in the format abc@gmail.com",
+                },
+                minLength: {
+                  value: 5,
+                  message: "Email should be greater than 5",
+                },
+              })}
             />
-            <button
-              style={{
-                padding: "0.5rem",
-                borderRadius: "3px",
-                border: "none",
-                background: "powderblue",
-                color: "black",
-              }}
-              onClick={handleSubmit}
-            >
-              Submit
+            {errors.email && <p>{errors.email.message}</p>}
+            <input
+              placeholder="Password"
+              className="signupPw"
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Please Enter Password",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password should be greater than 8",
+                },
+              })}
+            />
+            {errors.password && <p>{errors.password.message}</p>}
+
+            <button className="signupBtn" type="submit">
+              Create account
             </button>
-            <span style={{ margin: "auto" }}> Already a member ? </span>
-            <button
-              style={{
-                padding: "0.5rem",
-                borderRadius: "3px",
-                border: "none",
-                background: "powderblue",
-                color: "black",
-              }}
-              onClick={() => setShowLogin(true)}
-            >
-              Login
-            </button>
-          </div>
-        </>
-      )}
+          </form>
+          <span style={{ margin: "auto", color: "#fff" }}>
+            {" "}
+            Already a member ?{" "}
+          </span>
+          <button className="signupBtn" onClick={GoToLogin}>
+            Login
+          </button>
+        </div>
+      </div>
+      {accountCreatedFlag && <p>Username or Email already in use</p>}
     </>
   );
 };

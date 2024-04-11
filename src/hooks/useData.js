@@ -1,33 +1,51 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addUser } from "../features/users/userSlice";
 import store from "../store/store";
+import { useForm } from "react-hook-form";
 
 export const useData = () => {
-  //   const [userData, setUserData] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm();
   const [currUser, setCurrUser] = useState({});
+  const [accountCreatedFlag, setAccountCreatedFlag] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    dispatch(addUser(name, email));
-    console.log(store.getState());
-    // setUserData([...userData, store.getState()]);
-    setEmail("");
-    setName("");
+  const onSubmitClick = () => {
+    const values = getValues();
+
+    console.log("store", store.getState());
+    const a = store
+      .getState()
+      .user.allUsers.filter(
+        (i) => i.userName === values.name || i.email === values.email
+      );
+    console.log("a", a);
+    if (a.length === 0) {
+      dispatch(addUser(values.name, values.email, values.password));
+      navigate("/login");
+      setAccountCreatedFlag(false);
+    } else {
+      setAccountCreatedFlag(true);
+    }
   };
 
   return {
-    // userData,
-    // setUserData,
-    name,
-    setName,
-    email,
-    setEmail,
     handleSubmit,
-    // handleLogin,
+    accountCreatedFlag,
     currUser,
     setCurrUser,
+    register,
+    errors,
+    onSubmitClick,
+    getValues,
+    setValue,
   };
 };
