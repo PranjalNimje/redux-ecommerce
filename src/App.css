@@ -555,7 +555,7 @@ padding: 5px;
   background-color: #000;
   color: #b661f6;
 }
-.signupName, .signupPw, .signupEmail{
+.signupName, .signupPw, .signupEmail,.loginName, .loginPw{
   padding: 0.5rem;
                 border-radius: 3px;
                 border: 1px solid;
@@ -564,4 +564,119 @@ padding: 5px;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+}
+.signupAccExistsErr{
+  padding: 4px;
+  color: #fff;
+  margin: 0;
+  background: #ff0202;
+  text-align: center;
+  border-radius: 2px;
+}
+.signupErrs{
+  margin: 0;
+}
+.loginBtnLog{
+  padding: 0.5rem;
+  border-radius: 3px;
+  background: powderblue;
+  color: black;
+  border: none;
+}
+.loginformBlock{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.loginSignupBtn{
+  display: grid;
+}
+.profileLogout{
+  cursor: pointer;
+}
+.cartCard{
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  /* background: cornflowerblue; */
+  justify-content: space-around;
+}
+.cartLeftBlock{
+  font-family: sans-serif;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  /* box-shadow: */
+  /* 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  /* margin: auto;
+  margin-top: 4.5rem; */
+  width: 65%;
+  display: grid;
+  row-gap: 10px;
+  padding: 1rem;
+  background: #fff;
+}
+.cartBlock{
+  margin: auto;
+  margin-top: 4.5rem;
+  display: flex;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+  /* box-shadow:
+  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  height: fit-content;
+  min-height: 70vh;
+  width: 85vw;
+}
+.cartRightBlock{
+  width: 35%;
+  background-color: lightgrey;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.cartHeading{
+  text-align: center;
+  margin-bottom: 18px;
+}
+.cartCard{
+  display: flex;
+  
+}
+.cartTitle{
+width: 30% ;
+display: grid;
+}
+.cartPrice{
+width: 15%;
+font-weight: 600;
+}
+.cartQuantity{
+ width: 16%;
+ display: flex;
+ justify-content: space-evenly;
+}
+.cartImg{
+  height: 50px;
+  width: 50px;
+}
+.cartIncBtn{
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: none;
+  background: #f2f2f2;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.cartLine{
+  height: 0.01px;
+  width: 95%;
+
+  border: 1px solid #dee2e6;
+}
+.cartCategory{
+  color: #6c757d;
+  font-size: 16px;
+}
+.cartTitleH{
+  /* font-weight: 600; */
 }

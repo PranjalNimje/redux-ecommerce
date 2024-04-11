@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Search from "../components/search/Search";
 import Cart from "./Cart";
 import { useNavigate } from "react-router-dom";
 import ProductMenu from "../components/menu/ProductMenu";
+import { deleteSelectedUser } from "../features/users/userSlice";
 
 const Profile = ({ itemsList }) => {
   const selectedUser = useSelector((state) => state.user.selectedUser);
@@ -12,6 +13,7 @@ const Profile = ({ itemsList }) => {
   const [iconActive, setIconActive] = useState("");
   const ref = useRef(null);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const GoToProducts = () => {
     navigate(`/items`);
@@ -46,7 +48,11 @@ const Profile = ({ itemsList }) => {
     setIsOpen(false);
     setIsHovered(false);
   };
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    dispatch(deleteSelectedUser());
+    setIsHovered(false);
+    setIsOpen(false);
+  };
   // const handleProducts = () => {
   //   navigate
   // };
@@ -189,16 +195,26 @@ const Profile = ({ itemsList }) => {
               ? ` Guest  `
               : ` ${selectedUser.userName}  `}
           </p>
-          <p className="profileLogin" onClick={handleLogin}>
-            Login
-          </p>
-          <p className="profileSignup" onClick={handleSignup}>
-            Sign Up
-          </p>
-          <p className="profileEdit">Edit Profile</p>
-          <p className="profileLogout" onClick={handleLogout}>
-            Logout
-          </p>
+          {selectedUser.userName === "" && (
+            <>
+              <p className="profileLogin" onClick={handleLogin}>
+                Login
+              </p>
+              <p className="profileSignup" onClick={handleSignup}>
+                Sign Up
+              </p>
+            </>
+          )}
+
+          {selectedUser.userName !== "" && (
+            <>
+              <p className="profileEdit">Edit Profile</p>
+
+              <p className="profileLogout" onClick={handleLogout}>
+                Logout
+              </p>
+            </>
+          )}
         </div>
       )}
     </>

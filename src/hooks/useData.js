@@ -40,6 +40,7 @@ export const useData = () => {
   return {
     handleSubmit,
     accountCreatedFlag,
+    setAccountCreatedFlag,
     currUser,
     setCurrUser,
     register,

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const SignUp = ({ itemsList }) => {
   const {
     accountCreatedFlag,
+    setAccountCreatedFlag,
     handleSubmit,
     onSubmitClick,
     register,
@@ -13,13 +14,15 @@ const SignUp = ({ itemsList }) => {
     getValues,
     setValue,
   } = useData();
-  console.log("ERRORS", errors);
-
+  // console.log("ERRORS", errors);
   const navigate = useNavigate();
   const multipleValues = getValues();
-  console.log("multipleValues", multipleValues);
+  // console.log("multipleValues", multipleValues);
   const GoToLogin = () => {
     navigate(`/login`);
+  };
+  const handleAccoutErr = () => {
+    setAccountCreatedFlag(false);
   };
   return (
     <>
@@ -52,6 +55,7 @@ const SignUp = ({ itemsList }) => {
               marginBottom: "18px",
               color: "#fff",
               fontFamily: "'Poppins', sans-serif",
+              marginTop: "10px",
             }}
           >
             SignUp
@@ -65,6 +69,8 @@ const SignUp = ({ itemsList }) => {
               // name="singleErrorInput"
               // render={({ errors }) => <p>{errors.message}</p>}
               {...register("name", {
+                onChange: () => setAccountCreatedFlag(false),
+                onBlur: () => setAccountCreatedFlag(false),
                 required: {
                   value: true,
                   message: "Please Enter Username",
@@ -75,7 +81,7 @@ const SignUp = ({ itemsList }) => {
                 },
               })}
             />
-            {errors.name && <p>{errors.name.message}</p>}
+            {errors.name && <p className="signupErrs">{errors.name.message}</p>}
             <input
               placeholder="Email"
               className="signupEmail"
@@ -96,7 +102,9 @@ const SignUp = ({ itemsList }) => {
                 },
               })}
             />
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.email && (
+              <p className="signupErrs">{errors.email.message}</p>
+            )}
             <input
               placeholder="Password"
               className="signupPw"
@@ -111,11 +119,18 @@ const SignUp = ({ itemsList }) => {
                 },
               })}
             />
-            {errors.password && <p>{errors.password.message}</p>}
+            {errors.password && (
+              <p className="signupErrs">{errors.password.message}</p>
+            )}
 
             <button className="signupBtn" type="submit">
               Create account
             </button>
+            {accountCreatedFlag && (
+              <p className="signupAccExistsErr">
+                Username or Email already in use
+              </p>
+            )}
           </form>
           <span style={{ margin: "auto", color: "#fff" }}>
             {" "}
@@ -126,7 +141,6 @@ const SignUp = ({ itemsList }) => {
           </button>
         </div>
       </div>
-      {accountCreatedFlag && <p>Username or Email already in use</p>}
     </>
   );
 };

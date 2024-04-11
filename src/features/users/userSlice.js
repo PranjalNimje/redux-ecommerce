@@ -69,14 +69,20 @@ const userSlice = createSlice({
     },
     addSelectedUser: (state, action) => {
       console.log(action);
-      state.selectedUser.email = action.payload[0].email;
-      state.selectedUser.userName = action.payload[0].userName;
-      state.selectedUser.password = action.payload[0].password;
+      state.selectedUser.email = action.payload.email;
+      state.selectedUser.userName = action.payload.userName;
+      state.selectedUser.password = action.payload.password;
+    },
+    deleteSelectedUser: (state) => {
+      state.selectedUser.email = "";
+      state.selectedUser.userName = "";
+      state.selectedUser.password = "";
     },
   },
 });
 
-export const { addUser, addSelectedUser } = userSlice.actions;
+export const { addUser, addSelectedUser, deleteSelectedUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;
 
